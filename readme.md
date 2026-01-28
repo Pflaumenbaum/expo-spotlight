@@ -88,11 +88,10 @@ export default function SpotlightExample() {
 
 ```
 
-Methods:
+## Methods:
 
 ## `indexItems()`
 
-#### Methods:
 
 Indexes one or more items into iOS Spotlight. If an item with an id already exist it will be updated.
 
@@ -124,9 +123,11 @@ Removes all Spotlight items associated with a specific domain identifier.
 
 ## `onSpotlightItemTapped()`
 
+This Listener is triggered when a user opens the app from a spotlight-indexed item. 
+
 | Parameter | Type                       | Note                                           |
 | --------- | -------------------------- | ---------------------------------------------- |
-| `event`   | `SpotlightItemTappedEvent` | The domain identifier used when indexing items |
+| `event`   | `SpotlightItemTappedEvent` | Returns the id used when indexing items |
 
 ## Types
 
@@ -171,8 +172,8 @@ Removes all Spotlight items associated with a specific domain identifier.
 | title            | string                            | Display title shown in Spotlight.                     |
 | domainIdentifier | string                            | Grouping identifier used to organize items by domain. |
 | description      | string (optional)                 | Item description shown in Spotlight.                  |
-| thumbnail        | SpotlightItemThumbnail (optional) | Thumbnail image.                                      |
-| metadata         | SpotlightItemMetadata (optional)  | Optional metadata to improve search and presentation. |
+| thumbnail        | SpotlightItemThumbnail (optional) | Thumbnail image that should be displayed instead of the app icon.                                      |
+| metadata         | SpotlightItemMetadata (optional)  | Optional metadata that can improve search accuracy. |
 
 ## License
 
