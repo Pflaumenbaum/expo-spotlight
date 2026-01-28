@@ -90,7 +90,7 @@ export default function SpotlightExample() {
 
 ## Methods:
 
-## `indexItems()`
+### `indexItems()`
 
 
 Indexes one or more items into iOS Spotlight. If an item with an id already exist it will be updated.
@@ -99,7 +99,7 @@ Indexes one or more items into iOS Spotlight. If an item with an id already exis
 | --------- | ----------------- | --------------------------------------------------- |
 | `items`   | `SpotlightItem[]` | An array of Spotlight items to index for spotlight. |
 
-## `removeItem()`
+### `removeItem()`
 
 Removes a single indexed item from Spotlight.
 
@@ -107,11 +107,11 @@ Removes a single indexed item from Spotlight.
 | --------- | -------- | ---------------------------------------------------- |
 | `id`      | `string` | The unique identifier used when the item was indexed |
 
-## `clearAll()`
+### `clearAll()`
 
 Removes all Spotlight items indexed by your app.
 
-## `clearDomain()`
+### `clearDomain()`
 
 Removes all Spotlight items associated with a specific domain identifier.
 
@@ -121,7 +121,7 @@ Removes all Spotlight items associated with a specific domain identifier.
 
 ## Listeners
 
-## `onSpotlightItemTapped()`
+### `onSpotlightItemTapped()`
 
 This Listener is triggered when a user opens the app from a spotlight-indexed item. 
 
@@ -133,7 +133,18 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 
 ### `SpotlightItem`
 
-**SpotlightItemThumbnail**
+| Attribute        | Type                              | Description                                           |
+| ---------------- | --------------------------------- | ----------------------------------------------------- |
+| id               | string                            | Unique identifier for the item.                       |
+| title            | string                            | Display title shown in Spotlight.                     |
+| domainIdentifier | string                            | Grouping identifier used to organize items by domain. |
+| description      | string (optional)                 | Item description shown in Spotlight.                  |
+| thumbnail        | SpotlightItemThumbnail (optional) | Thumbnail image that should be displayed instead of the app icon.                                      |
+| metadata         | SpotlightItemMetadata (optional)  | Optional metadata that can improve search accuracy. |
+
+
+
+### `SpotlightItemThumbnail`
 
 | Attribute | Type              | Description                           |
 | --------- | ----------------- | ------------------------------------- |
@@ -141,7 +152,7 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 | url       | string (optional) | Image URL for light theme.            |
 | darkUrl   | string (optional) | Image URL for dark theme.            |
 
-**SpotlightItemMetadata**
+### `SpotlightItemMetadata`
 
 | Attribute   | Type                                                                                           | Description                                                                   |
 | ----------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -158,22 +169,12 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 | addedDate   | number (optional)                                                                              | Timestamp when item was added to index (ms since epoch).                      |
 | startDate   | number (optional)                                                                              | Start timestamp (ms since epoch).                                             |
 
-**SpotlightItemTappedEvent**
+### `SpotlightItemTappedEvent`
 
 | Attribute | Type   | Description                                     |
 | --------- | ------ | ----------------------------------------------- |
 | id        | string | Id of the tapped Spotlight item. |
 
-**SpotlightItem**
-
-| Attribute        | Type                              | Description                                           |
-| ---------------- | --------------------------------- | ----------------------------------------------------- |
-| id               | string                            | Unique identifier for the item.                       |
-| title            | string                            | Display title shown in Spotlight.                     |
-| domainIdentifier | string                            | Grouping identifier used to organize items by domain. |
-| description      | string (optional)                 | Item description shown in Spotlight.                  |
-| thumbnail        | SpotlightItemThumbnail (optional) | Thumbnail image that should be displayed instead of the app icon.                                      |
-| metadata         | SpotlightItemMetadata (optional)  | Optional metadata that can improve search accuracy. |
 
 ## License
 
