@@ -2,6 +2,7 @@
   "expo": {
     "name": "expo-spotlight-example",
     "slug": "expo-spotlight-example",
+    "scheme": "expo-spotlight-example",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,8 +15,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "expo.modules.spotlight.example"
+      "bundleIdentifier": "expo.modules.spotlight.example",
+      
     },
+    
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

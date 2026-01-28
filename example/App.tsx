@@ -1,73 +1,56 @@
-import { useEvent } from 'expo';
-import ExpoSpotlight, { ExpoSpotlightView } from 'expo-spotlight';
-import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import * as ExpoSpotlight from "expo-spotlight";
+import { useEffect, useState } from "react";
+import { Button, View, Text } from "react-native";
 
-export default function App() {
-  const onChangePayload = useEvent(ExpoSpotlight, 'onChange');
+export default function SpotlightExample() {
+  const [selectedItem, setSelectedItem] = useState<string>();
+
+  async function handleIndexSampleItems() {
+    await ExpoSpotlight.indexItems([
+      {
+        id: "note-1",
+        title: "Shopping List",
+        domainIdentifier: "com.example.notes",
+        description: "Milk, Eggs, Bread",
+        metadata: {
+          keywords: ["shopping", "groceries"],
+        },
+      },
+      {
+        id: "note-2",
+        title: "Workout Plan edited",
+        domainIdentifier: "com.example.notes",
+        description: "Leg day routine",
+      },
+    ]);
+  }
+
+  async function handleRemove(id: string) {
+    await ExpoSpotlight.removeItem(id);
+  }
+
+  async function handleClearNotes() {
+    await ExpoSpotlight.clearDomain("com.example.notes");
+  }
+
+  useEffect(() => {
+    const subscription = ExpoSpotlight.addSpotlightItemTappedListener(
+      ({ id }) => {
+        setSelectedItem(id);
+      },
+    );
+
+    return () => subscription.remove();
+  }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
-        <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{ExpoSpotlight.PI}</Text>
-        </Group>
-        <Group name="Functions">
-          <Text>{ExpoSpotlight.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await ExpoSpotlight.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <ExpoSpotlightView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
-        </Group>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-function Group(props: { name: string; children: React.ReactNode }) {
-  return (
-    <View style={styles.group}>
-      <Text style={styles.groupHeader}>{props.name}</Text>
-      {props.children}
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Button title="Index sample items" onPress={handleIndexSampleItems} />
+      <View style={{ height: 12 }} />
+      <Button title="Remove note-1" onPress={() => handleRemove("note-1")} />
+      <View style={{ height: 12 }} />
+      <Button title="Clear all notes" onPress={handleClearNotes} />
+      <Text>Selected item: {selectedItem}</Text>
     </View>
   );
 }
-
-const styles = {
-  header: {
-    fontSize: 30,
-    margin: 20,
-  },
-  groupHeader: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  group: {
-    margin: 20,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 20,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-  },
-  view: {
-    flex: 1,
-    height: 200,
-  },
-};

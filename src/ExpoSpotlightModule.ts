@@ -1,12 +1,26 @@
-import { NativeModule, requireNativeModule } from 'expo';
+import { EventSubscription, requireNativeModule } from "expo-modules-core";
+import type { ExpoSpotlightModule, SpotlightItem, SpotlightItemTappedEvent } from "./ExpoSpotlight.types";
 
-import { ExpoSpotlightModuleEvents } from './ExpoSpotlight.types';
+const nativeModule = requireNativeModule<ExpoSpotlightModule>("ExpoSpotlight");
 
-declare class ExpoSpotlightModule extends NativeModule<ExpoSpotlightModuleEvents> {
-  PI: number;
-  hello(): string;
-  setValueAsync(value: string): Promise<void>;
+export function indexItems(items: SpotlightItem[]) {
+  return nativeModule.indexItems(items);
 }
 
-// This call loads the native module object from the JSI.
-export default requireNativeModule<ExpoSpotlightModule>('ExpoSpotlight');
+export function removeItem(id: string) {
+  return nativeModule.removeItem(id);
+}
+
+export function clearAll() {
+  return nativeModule.clearAll();
+}
+
+export function clearDomain(domainIdentifier: string) {
+  return nativeModule.clearDomain(domainIdentifier);
+}
+
+export function addSpotlightItemTappedListener(listener: (event: SpotlightItemTappedEvent) => void): EventSubscription {
+  return nativeModule.addListener('onSpotlightItemTapped', listener);
+}
+
+

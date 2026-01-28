@@ -1,5 +1,4 @@
-// Reexport the native module. On web, it will be resolved to ExpoSpotlightModule.web.ts
-// and on native platforms to ExpoSpotlightModule.ts
-export { default } from './ExpoSpotlightModule';
-export { default as ExpoSpotlightView } from './ExpoSpotlightView';
-export * from  './ExpoSpotlight.types';
+// Re-export the native module functions and types. On web this resolves to
+// `ExpoSpotlightModule.web.ts`, and on native platforms to `ExpoSpotlightModule.ts`.
+export { indexItems, removeItem, clearAll, clearDomain, addSpotlightItemTappedListener } from './ExpoSpotlightModule';
+export * from './ExpoSpotlight.types';
