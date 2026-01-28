@@ -2,7 +2,7 @@
 
 An Expo native module for indexing and managing searchable content in iOS Spotlight using the iOS [`CoreSpotlight`](https://developer.apple.com/documentation/corespotlight) API
 
-TODO: HERE VIDEO
+https://github.com/user-attachments/assets/8d0968e9-ee4f-4cc8-918d-8b03534e3415
 
 With expo-spotlight, you can make your app’s content discoverable directly from the iOS system search
 
@@ -177,4 +177,4 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 
 ## License
 
-[MIT]()
+[MIT](https://github.com/Pflaumenbaum/expo-spotlight/blob/main/LICENSE)
