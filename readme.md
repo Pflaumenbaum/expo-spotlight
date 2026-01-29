@@ -9,8 +9,9 @@ With expo-spotlight, you can make your app’s content discoverable directly fro
 ## Features
 
 - Index custom items into iOS Spotlight
+- Support for thumbnail images
 - Group items using domain identifiers
-- Remove items by id.
+- Remove items by id
 - Clear all Spotlight data or clear by domain
 - Handle item selection events via a listener (Delegate Subscriber)
 
@@ -97,7 +98,7 @@ Indexes one or more items into iOS Spotlight. If an item with an id already exis
 
 | Parameter | Type              | Note                                                |
 | --------- | ----------------- | --------------------------------------------------- |
-| `items`   | `SpotlightItem[]` | An array of Spotlight items to index for spotlight. |
+| `items`   | `SpotlightItem[]` | An array of Spotlight items to index for spotlight |
 
 ### `removeItem()`
 
@@ -135,12 +136,12 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 
 | Attribute        | Type                              | Description                                           |
 | ---------------- | --------------------------------- | ----------------------------------------------------- |
-| id               | string                            | Unique identifier for the item.                       |
-| title            | string                            | Display title shown in Spotlight.                     |
-| domainIdentifier | string                            | Grouping identifier used to organize items by domain. |
-| description      | string (optional)                 | Item description shown in Spotlight.                  |
-| thumbnail        | SpotlightItemThumbnail (optional) | Thumbnail image that should be displayed instead of the app icon.                                      |
-| metadata         | SpotlightItemMetadata (optional)  | Optional metadata that can improve search accuracy. |
+| id               | `string`                            | Unique identifier for the item.                       |
+| title            | `string`                            | Display title shown in Spotlight.                     |
+| domainIdentifier | `string`                            | Grouping identifier used to organize items by domain. |
+| description      | `string` (optional)                 | Item description shown in Spotlight.                  |
+| thumbnail        | `SpotlightItemThumbnail` (optional) | Thumbnail image that should be displayed instead of the app icon.                                      |
+| metadata         | `SpotlightItemMetadata` (optional)  | Optional metadata that can improve search accuracy. |
 
 
 
@@ -148,32 +149,32 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 
 | Attribute | Type              | Description                           |
 | --------- | ----------------- | ------------------------------------- |
-| base64    | string (optional) | Base64-encoded image data (PNG/JPEG). |
-| url       | string (optional) | Image URL for light theme.            |
-| darkUrl   | string (optional) | Image URL for dark theme.            |
+| base64    | `string` (optional) | Base64-encoded image data (PNG/JPEG). |
+| url       | `string` (optional) | Image URL            |
+| darkUrl   | `string` (optional) | Image URL for dark theme.            |
 
 ### `SpotlightItemMetadata`
 
 | Attribute   | Type                                                                                           | Description                                                                   |
 | ----------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| keywords    | string[] (optional)                                                                            | Search keywords associated with the item.                                     |
-| contentType | string (optional)                                                                              | content type of the item                                                      |
-| rankingHint | number (optional)                                                                              | A number that indicates the relative importance of the item among other items from the app|
-| copyright   | string (optional)                                                                              | The copyright date of the item                                                |
-| url         | string (optional)                                                                              | The URL associated with the media                                             |
-| location    | { latitude: number; longitude: number; namedLocation?: string; alatitude?: number } (optional) | Geographic location data of the item                                          |
-| createdAt   | number (optional)                                                                              | Creation timestamp (ms since epoch).                                          |
-| updatedAt   | number (optional)                                                                              | Last updated timestamp (ms since epoch).                                      |
-| endDate     | number (optional)                                                                              | End timestamp (ms since epoch).                                               |
-| dueDate     | number (optional)                                                                              | Due timestamp (ms since epoch).                                               |
-| addedDate   | number (optional)                                                                              | Timestamp when item was added to index (ms since epoch).                      |
-| startDate   | number (optional)                                                                              | Start timestamp (ms since epoch).                                             |
+| keywords    | `string[]` (optional)                                                                            | Search keywords associated with the item.                                     |
+| contentType | `string` (optional)                                                                              | Content type of the item                                                      |
+| rankingHint | `number` (optional)                                                                              | A number that indicates the relative importance of the item among other items from the app|
+| copyright   | `string` (optional)                                                                              | The copyright date of the item                                                |
+| url         | `string` (optional)                                                                              | The URL associated with the media                                             |
+| location    | { latitude: `number`; longitude: `number`; namedLocation?: `string`; alatitude?: `number` } (optional) | Geographic location data of the item                                          |
+| createdAt   | `number` (optional)                                                                              | Creation timestamp (ms since epoch).                                          |
+| updatedAt   | `number` (optional)                                                                              | Last updated timestamp (ms since epoch).                                      |
+| endDate     | `number` (optional)                                                                              | End timestamp (ms since epoch).                                               |
+| dueDate     | `number` (optional)                                                                              | Due timestamp (ms since epoch).                                               |
+| addedDate   | `number` (optional)                                                                              | Timestamp when item was added to index (ms since epoch).                      |
+| startDate   | `number` (optional)                                                                              | Start timestamp (ms since epoch).                                             |
 
 ### `SpotlightItemTappedEvent`
 
 | Attribute | Type   | Description                                     |
 | --------- | ------ | ----------------------------------------------- |
-| id        | string | Id of the tapped Spotlight item. |
+| id        | `string` | Id of the tapped Spotlight item. |
 
 
 ## License
