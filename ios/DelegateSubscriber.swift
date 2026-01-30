@@ -8,7 +8,7 @@ import ExpoModulesCore
 import CoreSpotlight
 
 public class SpotlightAppDelegateSubscriber: ExpoAppDelegateSubscriber {
-  
+  var running: Bool = false
   public func application(
     _ application: UIApplication,
     continue userActivity: NSUserActivity,
@@ -20,12 +20,16 @@ public class SpotlightAppDelegateSubscriber: ExpoAppDelegateSubscriber {
     else {
       return false
     }
+    if(!running){
+      UserDefaults.standard.set(identifier, forKey: "ExpoSpotlight.CashedItem")
+    }
     
     NotificationCenter.default.post(
       name: Notification.Name("ExpoSpotlightItemTapped"),
       object: nil,
       userInfo: ["id": identifier]
     )
+    running = true
     
     return true
   }

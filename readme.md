@@ -13,7 +13,8 @@ With expo-spotlight, you can make your app’s content discoverable directly fro
 - Group items using domain identifiers
 - Remove items by id
 - Clear all Spotlight data or clear by domain
-- Handle item selection events via a listener (Delegate Subscriber)
+- Handle item selection events via a listener, even when the app is not active in the background
+
 
 ## Installation
 

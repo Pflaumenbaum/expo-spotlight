@@ -25,6 +25,14 @@ public class ExpoSpotlightModule: Module {
       }
     }
     
+    OnStartObserving {
+      if let id = UserDefaults.standard.string(forKey: "ExpoSpotlight.CashedItem"),
+         !id.isEmpty {
+        self.sendEvent("onSpotlightItemTapped", ["id": id])
+        UserDefaults.standard.set("", forKey: "ExpoSpotlight.CashedItem")
+      }
+    }
+    
     AsyncFunction("indexItems") { (items: [[String: Any]]) in
       
       var searchableItems: [CSSearchableItem] = []
