@@ -1,14 +1,19 @@
-import { EventSubscription, requireNativeModule } from "expo-modules-core";
+import { EventSubscription, requireOptionalNativeModule } from "expo-modules-core";
 import type { ExpoSpotlightModule, SpotlightItem, SpotlightItemTappedEvent } from "./ExpoSpotlight.types";
 
-const nativeModule = requireNativeModule<ExpoSpotlightModule>("ExpoSpotlight");
+const nativeModule = requireOptionalNativeModule<ExpoSpotlightModule>("ExpoSpotlight");
+
+
+const emptySubscription: EventSubscription = {
+  remove() {},
+};
 
 /**
  * This function Indexes one or more items into iOS Spotlight. If an item with an id already exist it will be updated.
  * @param {items} 	SpotlightItem[]: 	An array of Spotlight items to index for spotlight.
  */
 export function indexItems(items: SpotlightItem[]) {
-  return nativeModule.indexItems(items);
+  return nativeModule?.indexItems(items);
 }
 
 /**
@@ -16,14 +21,14 @@ export function indexItems(items: SpotlightItem[]) {
  * @param {id} string: 	The id used when the item was indexed
  */
 export function removeItem(id: string) {
-  return nativeModule.removeItem(id);
+  return nativeModule?.removeItem(id);
 }
 
 /**
  * This function removes all Spotlight items indexed by your app.
  */
 export function clearAll() {
-  return nativeModule.clearAll();
+  return nativeModule?.clearAll();
 }
 
 /**
@@ -31,7 +36,7 @@ export function clearAll() {
  * @param {domainIdentifer} string: The domain identifier used when indexing items.
  */
 export function clearDomain(domainIdentifier: string) {
-  return nativeModule.clearDomain(domainIdentifier);
+  return nativeModule?.clearDomain(domainIdentifier);
 }
 
 /**
@@ -39,7 +44,10 @@ export function clearDomain(domainIdentifier: string) {
  * @param {event} SpotlightItemTappedEvent: Returns the id used when indexing items
  * */
 export function addSpotlightItemTappedListener(listener: (event: SpotlightItemTappedEvent) => void): EventSubscription {
-  return nativeModule.addListener('onSpotlightItemTapped', listener);
+  if(!nativeModule){
+    return emptySubscription;
+  }
+  return nativeModule?.addListener('onSpotlightItemTapped', listener);
 }
 
 
