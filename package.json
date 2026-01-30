@@ -1,6 +1,6 @@
 {
   "name": "expo-spotlight",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "An Expo native module for indexing and managing searchable content in iOS Spotlight using the iOS CoreSpotlight Api",
   "main": "build/index.js",
   "types": "build/index.d.ts",
