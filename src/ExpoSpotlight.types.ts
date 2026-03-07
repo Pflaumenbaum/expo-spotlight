@@ -76,6 +76,9 @@ export type SpotlightItem = {
 
   // Optional metadata that can improve search accuracy
   metadata?: SpotlightItemMetadata;
+
+  // Expiration timestamp (ms since epoch) — iOS automatically removes the item after this date, even when the app is not running
+  expirationDate?: number;
 };
 
 export type ExpoSpotlightEvents = {

@@ -134,13 +134,15 @@ public class ExpoSpotlightModule: Module {
           
         }
         
-        searchableItems.append(
-          CSSearchableItem(
-            uniqueIdentifier: id,
-            domainIdentifier: domainIdentifier,
-            attributeSet: attributes
-          )
+        let searchableItem = CSSearchableItem(
+          uniqueIdentifier: id,
+          domainIdentifier: domainIdentifier,
+          attributeSet: attributes
         )
+        if let expirationDate = item["expirationDate"] as? Double {
+          searchableItem.expirationDate = Date(timeIntervalSince1970: expirationDate / 1000)
+        }
+        searchableItems.append(searchableItem)
       }
       
       CSSearchableIndex.default().indexSearchableItems(searchableItems)

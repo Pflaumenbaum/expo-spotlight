@@ -14,6 +14,7 @@ With expo-spotlight, you can make your app’s content discoverable directly fro
 - Remove items by id
 - Clear all Spotlight data or clear by domain
 - Handle item selection events via a listener, even when the app is not active in the background
+- Automatic item expiration via `expirationDate` — iOS removes stale items without the app running
 
 
 ## Installation
@@ -143,6 +144,7 @@ This Listener is triggered when a user opens the app from a spotlight-indexed it
 | description      | `string` (optional)                 | Item description shown in Spotlight.                  |
 | thumbnail        | `SpotlightItemThumbnail` (optional) | Thumbnail image that should be displayed instead of the app icon.                                      |
 | metadata         | `SpotlightItemMetadata` (optional)  | Optional metadata that can improve search accuracy. |
+| expirationDate   | `number` (optional)                 | Expiration timestamp (ms since epoch). iOS automatically removes the item after this date, even when the app is not running. |
 
 
 
