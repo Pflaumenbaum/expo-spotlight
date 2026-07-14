@@ -140,7 +140,7 @@ public class ExpoSpotlightModule: Module {
           attributeSet: attributes
         )
         if let expirationDate = item["expirationDate"] as? Double {
-          searchableItem.expirationDate = Date(timeIntervalSince1970: expirationDate / 1000)
+          searchableItem.expirationDate = Date(timeIntervalSince1970: expirationDate)
         }
         searchableItems.append(searchableItem)
       }
