@@ -108,28 +108,28 @@ public class ExpoSpotlightModule: Module {
           }
           if let createdAt = metadata["createdAt"] as? Double {
             attributes.contentCreationDate =
-            Date(timeIntervalSince1970: createdAt)
+            Date(timeIntervalSince1970: createdAt.seconds)
           }
           
           if let updatedAt = metadata["updatedAt"] as? Double {
             attributes.contentModificationDate =
-            Date(timeIntervalSince1970: updatedAt)
+            Date(timeIntervalSince1970: updatedAt.seconds)
           }
           if let endDate = metadata["endDate"] as? Double {
             attributes.endDate =
-            Date(timeIntervalSince1970: endDate)
+            Date(timeIntervalSince1970: endDate.seconds)
           }
           if let dueDate = metadata["dueDate"] as? Double {
             attributes.dueDate =
-            Date(timeIntervalSince1970: dueDate)
+            Date(timeIntervalSince1970: dueDate.seconds)
           }
           if let startDate = metadata["startDate"] as? Double {
             attributes.startDate =
-            Date(timeIntervalSince1970: startDate)
+            Date(timeIntervalSince1970: startDate.seconds)
           }
           if let addedDate = metadata["addedDate"] as? Double {
             attributes.addedDate =
-            Date(timeIntervalSince1970: addedDate)
+            Date(timeIntervalSince1970: addedDate.seconds)
           }
           
         }
@@ -140,7 +140,7 @@ public class ExpoSpotlightModule: Module {
           attributeSet: attributes
         )
         if let expirationDate = item["expirationDate"] as? Double {
-          searchableItem.expirationDate = Date(timeIntervalSince1970: expirationDate / 1000)
+          searchableItem.expirationDate = Date(timeIntervalSince1970: expirationDate.seconds)
         }
         searchableItems.append(searchableItem)
       }
@@ -163,4 +163,10 @@ public class ExpoSpotlightModule: Module {
         .deleteSearchableItems(withIdentifiers: [id])
     }
   }
+}
+
+extension Double {
+    var seconds: Double {
+        self / 1000
+    }
 }
